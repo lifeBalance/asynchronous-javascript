@@ -126,28 +126,27 @@ Let's explain these 2 things using the following example:
 
 1. As soon as the user clicks the button, a message is enqueued.
 
-![event loop 2](./images/event-driven/event-loop-2.png)
+  ![event loop 2](./images/event-driven/event-loop-2.png)
 
 2. If the user clicks several times, let's say two times more, several messages will be enqueud one after another:
 
-![event loop 3](./images/event-driven/event-loop-3.png)
+  ![event loop 3](./images/event-driven/event-loop-3.png)
 
-This two last messages will be put in the queue after the first one.
+  This two last messages will be put in the queue after the first one.
 
 3. When the previous code running in the stack (`someFunction`) finishes running, the handler of the first message on the queue will be pushed onto the stack. Note that `someFunction` has to finish execution completely, which is known as **run to completion**, leaving the stack clear for the next code in the queue, which is the handler of our first click event.
 
-![event loop 4](./images/event-driven/event-loop-4.png)
-> FINISH IT!!!
+  ![event loop 4](./images/event-driven/event-loop-4.png)
 
-When the stack is clear, the **event loop**, which is continuously polling the queue for messages, pushes the first one onto the stack.
+  When the stack is clear, the **event loop**, which is continuously polling the queue for messages, pushes the first one onto the stack.
 
 4. When the handler (anonymous function that increase the counter) for the first click is popped off the stack, it leaves the stack clear for the second handler:
 
-![event loop 5](./images/event-driven/event-loop-5.png)
+  ![event loop 5](./images/event-driven/event-loop-5.png)
 
 5. The second handler finishes, the third one gets pushed onto the stack:
 
-![event loop 6](./images/event-driven/event-loop-6.png)
+  ![event loop 6](./images/event-driven/event-loop-6.png)
 
 
 ## Asynchronous APIs
@@ -184,15 +183,15 @@ So far we have the JS engine running on a single thread, an event loop and a mes
 
 1. As soon as our script starts running, `setTimeout` is pushed onto the stack, but almost immediately, the timer execution it's passed to the thread pool to run there, so the main thread doesn't get blocked.
 
-![thread-pool 1](./images/thread-pool/event-loop-1.png)
+  ![thread-pool 1](./images/thread-pool/event-loop-1.png)
 
-At the same time, the rest of our code will run as usual, the `console.log` statement pushed into the stack, and popped off when it prints to the console.
+  At the same time, the rest of our code will run as usual, the `console.log` statement pushed into the stack, and popped off when it prints to the console.
 
 2. The interesting part comes now: When the timer finishes, it sends a message to the queue along with the callback we provided to `setTimeout`. We saw before how messages are added to the queue any time an **event** occurs, but in the case of `setTimeout` the message is enqueued when the timer finishes, there are no events involved in this API.
 
-![thread-pool 2](./images/thread-pool/event-loop-2.png)
+  ![thread-pool 2](./images/thread-pool/event-loop-2.png)
 
-This message will wait in the queue until the call stack is empty, and this happens only when all the code in the stack finishes running, which is known as **run to completion**. When the stack is clear, the **event loop**, which is continuously polling the queue for messages, pushes the first one onto the stack.
+  This message will wait in the queue until the call stack is empty, and this happens only when all the code in the stack finishes running, which is known as **run to completion**. When the stack is clear, the **event loop**, which is continuously polling the queue for messages, pushes the first one onto the stack.
 
 
 ---
