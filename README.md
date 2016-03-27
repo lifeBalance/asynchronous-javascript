@@ -2,8 +2,8 @@
 Notes about how JavaScript works and the different techniques for programming against asynchronous APIs using JS.
 
 ## Contents
-* [JavaScript Engines][1]
-* [JS Concurrency Model][2]
+* [JavaScript Engines][c1]
+* [JS Concurrency Model][c2]
 
 
 ---
@@ -16,7 +16,7 @@ Notes about how JavaScript works and the different techniques for programming ag
 
 
 <!-- links -->
-[1]: https://golang.org
 
 <!-- contents -->
 [c1]: README/js_engines.md
+[c2]: README/js_concurrency_model.md

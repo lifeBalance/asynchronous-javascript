@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Event Driven</title>
+</head>
+<body>
+  <h1>Counter: <span id="counter">0</span></h1>
+
+  <button type="button" id="button">Increase counter</button>
+
+  <script type="text/javascript">
+    var el = document.getElementById('counter');
+    var btn = document.getElementById('button');
+    var count = 0;
+
+    btn.addEventListener('click', function () {
+      el.innerHTML = ++count;
+    });
+  </script>
+</body>
+</html>

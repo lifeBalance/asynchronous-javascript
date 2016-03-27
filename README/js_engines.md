@@ -178,7 +178,7 @@ When we start working with JS we hear quite often how it runs in a **single thre
 <!-- navigation -->
 [home]: ../README.md
 [back]: ../README.md
-[next]: #
+[next]: js_concurrency_model.md
 
 <!-- links -->
 [1]: https://www.google.com/chrome/
